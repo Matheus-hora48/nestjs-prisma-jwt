@@ -8,7 +8,6 @@ import { ProspectModule } from './prospect/prospect.module';
 import { SaleModule } from './sale/sale.module';
 import { SellersModule } from './sellers/sellers.module';
 import { VisitModule } from './visit/visit.module';
-import { AppGateway } from './app.gateway';
 
 @Module({
   imports: [
@@ -23,6 +22,5 @@ import { AppGateway } from './app.gateway';
     VisitModule,
   ],
   controllers: [],
-  providers: [AppGateway],
 })
 export class AppModule {}
