@@ -10,11 +10,137 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model Users {
-  id Int @id @default(autoincrement())
-  name String @db.VarChar(100)
-  password String @db.VarChar(100)
-  username String @unique @db.VarChar(45)
-  email String @unique @db.VarChar(45)
+  id        Int      @id @default(autoincrement())
+  cnpj      String   @unique
+  senhaHash String
+  empresa   String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("users")
+}
+
+model Prospect {
+  id        Int      @id @default(autoincrement())
+  cadparc   DateTime
+  coddomi   String
+  id_fili    String
+  nomparc   String
+  sobparc   String
+  cgcende   String
+  fonende   String
+  codparc   Int
+  codcida   Int
+  usuparc   Int
+  is_leds    Int
+  is_parc    Int
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("prospects")
+}
+
+model Filiais {
+  id        Int      @id @default(autoincrement())
+  coddomi   String
+  cnpfili   String
+  id_fili   String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("filials")
+}
+
+model Cidade {
+  id         Int      @id @default(autoincrement())
+  codmuni    Int
+  uf_muni    String
+  nommuni    String
+  id_fili    String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("cidades")
+}
+
+model Visita {
+  id        Int      @id @default(autoincrement())
+  codvist   Int
+  id_fili    String
+  datvist   DateTime
+  empvist   String
+  resvist   String
+  docvist   String
+  fonvist   String
+  locvist   Int
+  usuvist   Int
+  dtrvist   DateTime
+  is_leds    Int
+  dthleds   DateTime
+  obsleds   String
+  usuleds   Int
+  is_parc    Int
+  dthparc   DateTime
+  obsparc   String
+  usuparc   Int
+  codcida   Int
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("vists")
+}
+
+model Vendedores {
+  id        Int      @id @default(autoincrement())
+  codusua   Int
+  id_fili    String
+  logusua   String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@unique([codusua, id_fili], name: "vendedors_codusua_id_fili_key")
+  @@map("vendedors")
+}
+
+model Vendas {
+  id        Int      @id @default(autoincrement())
+  numnota   Int
+  servend   String
+  codfili   String
+  id_fili    String
+  datvend   DateTime
+  codparc   Int
+  venvend   Int
+  vlrliqu   Decimal
+  vlrnota   Decimal
+  nomparc   String
+  staorca   String
+  cidade    Int
+  produtos  Json
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  @@map("vendas")
+}
+
+model Orcamento {
+  id        Int      @id @default(autoincrement())
+  codorca   Int
+  codfili   String
+  resseri   String
+  id_fili    String
+  datpedi   DateTime
+  codclie   Int
+  codusua   Int
+  vlrorca   Decimal
+  vlrliqu   Decimal
+  nomparc   String
+  staorca   String
+  cidade    Int
+  produtos  Json
+  created_at DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("orcamentos")
 }

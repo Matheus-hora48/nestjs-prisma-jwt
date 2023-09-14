@@ -16,7 +16,7 @@ export class UsersService{
      async createUser(data:Users): Promise<Users>{
           const existing = await this.prisma.users.findUnique({
                where: {
-                 username: data.username,
+                 cnpj: data.cnpj,
                },
              });
          

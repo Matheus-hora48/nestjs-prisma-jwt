@@ -1,9 +1,7 @@
-import { Prisma } from "@prisma/client";
+import { Prisma } from '@prisma/client';
 
-
-export class Users implements Prisma.UsersCreateInput{
-     name: string;
-     password: string;
-     username: string;
-     email: string;
+export class Users implements Prisma.UsersCreateInput {
+  cnpj: string;
+  senhaHash: string;
+  empresa: string;
 }
