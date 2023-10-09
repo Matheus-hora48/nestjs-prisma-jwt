@@ -1,6 +1,6 @@
 <p align="center">
 
-<a href="https://topsoft.inf.br/logo.png" target="blank"><img src="https://topsoft.inf.br/logo.png" width="200" alt="Topsoft Logo" /></a>
+<a href="https://topsoft.inf.br/logo.png" target="blank"><img src="https://topsoft.inf.br/logo.png" width="100" alt="Topsoft Logo" /></a>
 
 </p>
 
@@ -30,29 +30,27 @@ Para começar, certifique-se de ter o Node.js e o npm instalados em sua máquina
 
 1. Clone o repositório:
 
-`````bash
+```bash
 git clone url aqui bash
 ```
 
 2. Instale as dependências:
 
-````bash
+```bash
   cd api-monitor
 ```
 
-````bash
+```bash
   npm install
 ```
-
-
 
 3. **Configuração do Banco de Dados:**
 
    - Crie um arquivo `.env` na raiz do seu projeto e adicione as seguintes configurações:
 
-   ```bash
-   DATABASE_URL="postgresql://seu-usuario:senha@localhost:5432/nome-do-banco"
-`````
+```bash
+DATABASE_URL="postgresql://seu-usuario:senha@localhost:5432/nome-do-banco"
+```
 
 Substitua `seu-usuario`, `senha`, `localhost`, `5432` e `nome-do-banco` com suas próprias credenciais e informações do banco de dados.
 
