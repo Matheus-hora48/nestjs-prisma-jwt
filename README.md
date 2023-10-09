@@ -1,5 +1,8 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+<p align="center" diplay="flex">
+
+<a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+<a href="https://topsoft.inf.br/logo.png" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Topsoft Logo" /></a>
+
 </p>
 
 # API Monitor
@@ -87,7 +90,6 @@ Certifique-se de não compartilhar o arquivo `.env` publicamente, pois ele cont�
 - `prisma`
 - `reflect-metadata`
 - `rxjs`
-
 
 ## Licença
 
