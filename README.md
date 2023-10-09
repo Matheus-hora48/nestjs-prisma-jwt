@@ -1,15 +1,28 @@
-<p align="center" diplay="flex">
+<p align="center">
 
-<a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-<a href="https://topsoft.inf.br/logo.png" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Topsoft Logo" /></a>
+<a href="https://topsoft.inf.br/logo.png" target="blank"><img src="https://topsoft.inf.br/logo.png" width="200" alt="Topsoft Logo" /></a>
 
 </p>
 
 # API Monitor
 
+- [Descrição](#descrição)
+- [Instalação](#instalação)
+  - [Clone o Repositório](#clone-o-repositório)
+  - [Instale as Dependências](#instale-as-dependências)
+  - [Configuração do Banco de Dados](#configuração-do-banco-de-dados)
+  - [Migrações do Prisma](#migrações-do-prisma)
+- [Scripts](#scripts)
+  - [Rodar o Projeto](#rodar-o-projeto)
+  - [Verificação de Lint](#verificação-de-lint)
+  - [Executar Testes](#executar-testes)
+- [Estrutura do Projeto](#estrutura-do-projeto)
+- [Dependências Principais](#dependências-principais)
+- [Licença](#licença)
+
 ## Descrição
 
-Este é um projeto que utiliza o framework Nest.js juntamente com o Prisma para criar uma API de monitoramento.
+Este é um projeto que utiliza o framework Nest.js juntamente com o Prisma para criar uma a API do Top Monitor.
 
 ## Instalação
 
@@ -17,25 +30,29 @@ Para começar, certifique-se de ter o Node.js e o npm instalados em sua máquina
 
 1. Clone o repositório:
 
-````bash
+`````bash
 git clone url aqui bash
 ```
 
 2. Instale as dependências:
 
-```bash
+````bash
   cd api-monitor
-    npm install
-    ```
+```
+
+````bash
+  npm install
+```
+
 
 
 3. **Configuração do Banco de Dados:**
 
    - Crie um arquivo `.env` na raiz do seu projeto e adicione as seguintes configurações:
 
-   ```shell
+   ```bash
    DATABASE_URL="postgresql://seu-usuario:senha@localhost:5432/nome-do-banco"
-````
+`````
 
 Substitua `seu-usuario`, `senha`, `localhost`, `5432` e `nome-do-banco` com suas próprias credenciais e informações do banco de dados.
 
