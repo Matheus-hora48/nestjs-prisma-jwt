@@ -12,6 +12,7 @@
   - [Instale as Dependências](#instale-as-dependências)
   - [Configuração do Banco de Dados](#configuração-do-banco-de-dados)
   - [Migrações do Prisma](#migrações-do-prisma)
+- [Principais Comandos do Prisma](#principais-Comandos-do-prisma)
 - [Scripts](#scripts)
   - [Rodar o Projeto](#rodar-o-projeto)
   - [Verificação de Lint](#verificação-de-lint)
@@ -59,8 +60,25 @@ Certifique-se de não compartilhar o arquivo `.env` publicamente, pois ele cont�
 4. Migrações do Prisma:
 
 ```bash
-  npx prisma migrate dev bash
+  npx prisma migrate dev
 ```
+
+Depois
+
+```bash
+  npx prisma db push
+```
+
+## Principais Comandos do Prisma
+
+O Prisma oferece uma série de comandos úteis para gerenciar o banco de dados e o esquema. Abaixo estão os comandos mais comuns:
+
+- `npx prisma init`: Configura o Prisma para o seu aplicativo.
+- `npx prisma generate`: Gera artefatos, como o Prisma Client.
+- `npx prisma db pull`: Puxa o esquema de um banco de dados existente para atualizar o esquema do Prisma.
+- `npx prisma db push`: Atualiza o estado do esquema Prisma no banco de dados.
+- `npx prisma migrate dev`: Cria e aplica migrações no banco de dados com base nas definições do seu esquema Prisma.
+- `npx prisma studio`: Abre o Prisma Studio para navegar e interagir com os dados do seu banco.
 
 ## Scripts
 
