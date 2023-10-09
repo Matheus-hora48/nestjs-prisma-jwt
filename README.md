@@ -47,7 +47,7 @@ git clone url aqui bash
 
 3. **Configuração do Banco de Dados:**
 
-   - Crie um arquivo `.env` na raiz do seu projeto e adicione as seguintes configurações:
+Crie um arquivo `.env` na raiz do seu projeto e adicione as seguintes configurações:
 
 ```bash
 DATABASE_URL="postgresql://seu-usuario:senha@localhost:5432/nome-do-banco"
