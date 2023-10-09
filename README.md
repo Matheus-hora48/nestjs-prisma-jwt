@@ -2,72 +2,95 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+# API Monitor
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Descrição
 
-## Description
+Este é um projeto que utiliza o framework Nest.js juntamente com o Prisma para criar uma API de monitoramento.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Instalação
 
-## Installation
+Para começar, certifique-se de ter o Node.js e o npm instalados em sua máquina. Em seguida, siga os passos abaixo:
 
-```bash
-$ yarn install
+1. Clone o repositório:
+
+````bash
+git clone url aqui bash
 ```
 
-## Running the app
+2. Instale as dependências:
 
 ```bash
-# development
-$ yarn run start
+  cd api-monitor
+    npm install
+    ```
 
-# watch mode
-$ yarn run start:dev
 
-# production mode
-$ yarn run start:prod
-```
+3. **Configuração do Banco de Dados:**
 
-## Test
+   - Crie um arquivo `.env` na raiz do seu projeto e adicione as seguintes configurações:
+
+   ```shell
+   DATABASE_URL="postgresql://seu-usuario:senha@localhost:5432/nome-do-banco"
+````
+
+Substitua `seu-usuario`, `senha`, `localhost`, `5432` e `nome-do-banco` com suas próprias credenciais e informações do banco de dados.
+
+Certifique-se de não compartilhar o arquivo `.env` publicamente, pois ele contém informações sensíveis. Adicione-o ao seu arquivo `.gitignore` para evitar que seja incluído em repositórios versionados.
+
+4. Migrações do Prisma:
 
 ```bash
-# unit tests
-$ yarn run test
-
-# e2e tests
-$ yarn run test:e2e
-
-# test coverage
-$ yarn run test:cov
+  npx prisma migrate dev bash
 ```
 
-## Support
+## Scripts
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### Rodar o projeto
 
-## Stay in touch
+- `npm run build`: Compilação do projeto Nest.js.
+- `npm run format`: Formatação automática do código usando Prettier.
+- `npm run start`: Inicia a aplicação em modo de produção.
+- `npm run start:dev`: Inicia a aplicação em modo de desenvolvimento com auto-reload.
+- `npm run start:debug`: Inicia a aplicação em modo de depuração com auto-reload.
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+### Rodar verificação de lint
 
-## License
+- `npm run lint`: Executa a verificação de linting com ESLint.
 
-Nest is [MIT licensed](LICENSE).
+### Rodar testes
+
+- `npm test`: Executa os testes usando Jest.
+- `npm run test:watch`: Executa os testes em modo de observação.
+- `npm run test:cov`: Executa os testes com cobertura de código.
+- `npm run test:debug`: Executa os testes em modo de depuração.
+- `npm run test:e2e`: Executa os testes de integração.
+
+## Dependências Principais
+
+- `@nestjs/common`
+- `@nestjs/core`
+- `@nestjs/jwt`
+- `@nestjs/mapped-types`
+- `@nestjs/passport`
+- `@nestjs/platform-express`
+- `@nestjs/platform-socket.io`
+- `@nestjs/swagger`
+- `@nestjs/websockets`
+- `@prisma/client`
+- `bcrypt`
+- `bcryptjs`
+- `class-validator`
+- `passport`
+- `passport-jwt`
+- `pg`
+- `prisma`
+- `reflect-metadata`
+- `rxjs`
+
+
+## Licença
+
+Este projeto está sob a licença UNLICENSED - veja o arquivo [LICENSE.md](LICENSE.md) para detalhes.
+
+---
