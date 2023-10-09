@@ -3,7 +3,7 @@ import { AuthService } from './auth.service';
 import { LoginDto } from './dto/login-user.dto';
 import { Request, Response } from 'express';
 import { RegisterUsersDto } from './dto/register-user.dto';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 
 @ApiTags('auth')
 @Controller('/auth')
@@ -11,6 +11,9 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post('/login')
+  @ApiOperation({ summary: 'Endpoint de login' })
+  @ApiResponse({ status: 200, description: 'Login bem-sucedido' })
+  @ApiResponse({ status: 500, description: 'Erro interno do servidor' })
   async login(
     @Req() request: Request,
     @Res() response: Response,
@@ -32,6 +35,9 @@ export class AuthController {
   }
 
   @Post('/register')
+  @ApiOperation({ summary: 'Endpoint de registro' })
+  @ApiResponse({ status: 200, description: 'Registro bem-sucedido' })
+  @ApiResponse({ status: 500, description: 'Erro interno do servidor' })
   async register(
     @Req() request: Request,
     @Res() response: Response,
