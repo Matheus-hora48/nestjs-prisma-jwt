@@ -14,6 +14,7 @@ async function bootstrap() {
     .setTitle('Api Monitor Web')
     .setDescription('Api do monitor web feita em nestjs')
     .setVersion('1.0')
+    .addBearerAuth()
     .addTag('auth')
     .addTag('usuario')
     .addTag('cidades')
@@ -21,6 +22,7 @@ async function bootstrap() {
     .addTag('orcamento')
     .build();
   const document = SwaggerModule.createDocument(app, config);
+
   SwaggerModule.setup('api', app, document);
 
   app.enableCors(cors);

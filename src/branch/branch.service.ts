@@ -11,24 +11,7 @@ export class BranchService {
   constructor(private prisma: PrismaService) {}
 
   async findAll() {
-    return this.prisma.filiais.findMany({
-      select: {
-        coddomi: true,
-        cnpfili: true,
-        id_fili: true,
-      },
-    });
-  }
-
-  async findAllSelected() {
-    return this.prisma.filiais.findMany({
-      select: {
-        id: true,
-        coddomi: true,
-        id_fili: true,
-        updated_at: true,
-      },
-    });
+    return this.prisma.filiais.findMany({});
   }
 
   async findFilialsByCnpj(cnpj: string) {
@@ -58,11 +41,16 @@ export class BranchService {
     }
   }
 
-  async updateFilial(id: number, filialData: Prisma.FiliaisUpdateInput) {
+  async updateFilial(id: string, filialData: Prisma.FiliaisUpdateInput) {
     try {
+      const filialId = parseInt(id, 10);
+
+      if (isNaN(filialId)) {
+        throw new BadRequestException('O ID deve ser um número.');
+      }
       const filial = await this.prisma.filiais.findUnique({
         where: {
-          id,
+          id: filialId,
         },
       });
       if (!filial) {
@@ -70,7 +58,7 @@ export class BranchService {
       }
       await this.prisma.filiais.update({
         where: {
-          id,
+          id: filialId,
         },
         data: filialData,
       });
@@ -80,21 +68,30 @@ export class BranchService {
     }
   }
 
-  async deleteFilial(id: number) {
+  async deleteFilial(id: string) {
     try {
+      const filialId = parseInt(id, 10);
+
+      if (isNaN(filialId)) {
+        throw new BadRequestException('O ID deve ser um número.');
+      }
+
       const filial = await this.prisma.filiais.findUnique({
         where: {
-          id,
+          id: filialId,
         },
       });
+
       if (!filial) {
         throw new NotFoundException('Filial não encontrada');
       }
+
       await this.prisma.filiais.delete({
         where: {
-          id,
+          id: filialId,
         },
       });
+
       return { message: 'Filial deletada' };
     } catch (e) {
       throw new BadRequestException(e.message);
