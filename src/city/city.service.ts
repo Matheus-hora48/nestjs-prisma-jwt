@@ -5,13 +5,11 @@ import {
 } from '@nestjs/common';
 import { Prisma, Cidade } from '@prisma/client';
 import { PrismaService } from 'src/prisma.service';
-import { ApiProperty } from '@nestjs/swagger';
 
 @Injectable()
 export class CityService {
   constructor(private prisma: PrismaService) {}
 
-  @ApiProperty()
   async findAll() {
     return this.prisma.cidade.findMany({
       select: {
@@ -63,11 +61,16 @@ export class CityService {
     }
   }
 
-  async updateCity(id: number, cityData: Prisma.CidadeUpdateInput) {
+  async updateCity(id: string, cityData: Prisma.CidadeUpdateInput) {
     try {
+      const filialId = parseInt(id, 10);
+
+      if (isNaN(filialId)) {
+        throw new BadRequestException('O ID deve ser um número.');
+      }
       const cidade = await this.prisma.cidade.findUnique({
         where: {
-          id,
+          id: filialId,
         },
       });
       if (!cidade) {
@@ -75,7 +78,7 @@ export class CityService {
       }
       await this.prisma.cidade.update({
         where: {
-          id,
+          id: filialId,
         },
         data: cityData,
       });
@@ -85,11 +88,16 @@ export class CityService {
     }
   }
 
-  async deleteCity(id: number) {
+  async deleteCity(id: string) {
     try {
+      const filialId = parseInt(id, 10);
+
+      if (isNaN(filialId)) {
+        throw new BadRequestException('O ID deve ser um número.');
+      }
       const cidade = await this.prisma.cidade.findUnique({
         where: {
-          id,
+          id: filialId,
         },
       });
 
@@ -99,7 +107,7 @@ export class CityService {
 
       await this.prisma.cidade.delete({
         where: {
-          id,
+          id: filialId,
         },
       });
       return { message: 'Cidade deletada' };
