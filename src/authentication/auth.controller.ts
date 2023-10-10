@@ -3,10 +3,16 @@ import { AuthService } from './auth.service';
 import { LoginDto } from './dto/login-user.dto';
 import { Request, Response } from 'express';
 import { RegisterUsersDto } from './dto/register-user.dto';
-import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import {
+  ApiTags,
+  ApiOperation,
+  ApiResponse,
+  ApiBearerAuth,
+} from '@nestjs/swagger';
 
 @ApiTags('auth')
 @Controller('/auth')
+@ApiBearerAuth()
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
@@ -29,7 +35,7 @@ export class AuthController {
     } catch (err) {
       return response.status(500).json({
         status: 'Error!',
-        message: 'Internal Server Error!',
+        message: err,
       });
     }
   }

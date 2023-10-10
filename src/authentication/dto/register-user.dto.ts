@@ -7,7 +7,7 @@ export class RegisterUsersDto {
   })
   cnpj: string;
   @ApiProperty({
-    description: 'A senha hash do usuário',
+    description: 'A senha do usuário',
     example: '12345678',
   })
   senhaHash: string;

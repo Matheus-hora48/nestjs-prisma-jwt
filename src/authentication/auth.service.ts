@@ -1,4 +1,9 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  ConflictException,
+  Injectable,
+  NotFoundException,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { PrismaService } from 'src/prisma.service';
 import { UsersService } from 'src/users/users.service';
@@ -7,6 +12,7 @@ import * as bcrypt from 'bcrypt';
 import { RegisterUsersDto } from './dto/register-user.dto';
 import { Users } from 'src/users/users.model';
 import { ApiTags } from '@nestjs/swagger';
+import { log } from 'console';
 
 @ApiTags('auth')
 @Injectable()
@@ -28,7 +34,7 @@ export class AuthService {
       throw new NotFoundException('user not found');
     }
 
-    const validatePassword = await bcrypt.compare(cnpj, users.senhaHash);
+    const validatePassword = await bcrypt.compare(senhaHash, users.senhaHash);
 
     if (!validatePassword) {
       throw new NotFoundException('Invalid password');
@@ -40,6 +46,16 @@ export class AuthService {
   }
 
   async register(createDto: RegisterUsersDto): Promise<any> {
+    const { cnpj } = createDto;
+
+    const existingUser = await this.prismaService.users.findUnique({
+      where: { cnpj },
+    });
+
+    if (existingUser) {
+      throw new ConflictException('username already exists');
+    }
+
     const createUser = new Users();
     createUser.cnpj = createDto.cnpj;
     createUser.empresa = createDto.empresa;
@@ -50,5 +66,14 @@ export class AuthService {
     return {
       token: this.jwtService.sign({ cnpj: user.cnpj }),
     };
+  }
+
+  async verifyToken(token: string) {
+    try {
+      const payload = this.jwtService.verify(token);
+      return payload;
+    } catch (error) {
+      throw new UnauthorizedException('Invalid token');
+    }
   }
 }
