@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
+import {
+  Injectable,
+  NotFoundException,
+  BadRequestException,
+} from '@nestjs/common';
 import { Prisma, Visita } from '@prisma/client';
 import { PrismaService } from 'src/prisma.service';
 
@@ -31,36 +35,21 @@ export class VisitService {
           startsWith: cnpj,
         },
       },
-      select: {
-        codvist: true,
-        datvist: true,
-        empvist: true,
-        resvist: true,
-        docvist: true,
-        fonvist: true,
-        locvist: true,
-        usuvist: true,
-        dtrvist: true,
-        is_leds: true,
-        dthleds: true,
-        obsleds: true,
-        usuleds: true,
-        is_parc: true,
-        dthparc: true,
-        obsparc: true,
-        usuparc: true,
-        codcida: true,
-      },
     });
   }
 
   async createVisita(visitaData: Prisma.VisitaCreateInput) {
+    visitaData.datvist = new Date(visitaData.datvist);
+    visitaData.dtrvist = new Date(visitaData.dtrvist);
+    visitaData.dthleds = new Date(visitaData.dthleds);
+    visitaData.dthparc = new Date(visitaData.dthparc);
     try {
       const novaVisita = await this.prisma.visita.create({
         data: visitaData,
       });
       return novaVisita;
     } catch (e) {
+      console.log(e);
       throw new BadRequestException({ errors: e });
     }
   }

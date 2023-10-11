@@ -11,10 +11,10 @@ datasource db {
 }
 
 model Users {
-  id        Int      @id @default(autoincrement())
-  cnpj      String   @unique
-  senhaHash String
-  empresa   String
+  id         Int      @id @default(autoincrement())
+  cnpj       String   @unique
+  senhaHash  String
+  empresa    String
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
@@ -22,17 +22,17 @@ model Users {
 }
 
 model Prospect {
-  id        Int      @id @default(autoincrement())
-  cadparc   DateTime
-  coddomi   String
+  id         Int      @id @default(autoincrement())
+  cadparc    DateTime
+  coddomi    String
   id_fili    String
-  nomparc   String
-  sobparc   String
-  cgcende   String
-  fonende   String
-  codparc   Int
-  codcida   Int
-  usuparc   Int
+  nomparc    String
+  sobparc    String
+  cgcende    String
+  fonende    String
+  codparc    Int
+  codcida    Int
+  usuparc    Int
   is_leds    Int
   is_parc    Int
   created_at DateTime @default(now())
@@ -42,10 +42,10 @@ model Prospect {
 }
 
 model Filiais {
-  id        Int      @id @default(autoincrement())
-  coddomi   String
-  cnpfili   String
-  id_fili   String
+  id         Int      @id @default(autoincrement())
+  coddomi    String
+  cnpfili    String
+  id_fili    String
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
@@ -65,26 +65,27 @@ model Cidade {
 }
 
 model Visita {
-  id        Int      @id @default(autoincrement())
-  codvist   Int
+  id         Int      @id @default(autoincrement())
+  codvist    Int
   id_fili    String
-  datvist   DateTime
-  empvist   String
-  resvist   String
-  docvist   String
-  fonvist   String
-  locvist   Int
-  usuvist   Int
-  dtrvist   DateTime
+  datvist    DateTime
+  empvist    String
+  resvist    String
+  docvist    String
+  fonvist    String
+  locvist    Int
+  usuvist    Int
+  dtrvist    DateTime
   is_leds    Int
-  dthleds   DateTime
-  obsleds   String
-  usuleds   Int
+  dthleds    DateTime
+  obsleds    String
+  usuleds    Int
   is_parc    Int
-  dthparc   DateTime
-  obsparc   String
-  usuparc   Int
-  codcida   Int
+  dthparc    DateTime
+  obsparc    String
+  usuparc    Int
+  codcida    Int
+  filvist    String
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
@@ -92,10 +93,10 @@ model Visita {
 }
 
 model Vendedores {
-  id        Int      @id @default(autoincrement())
-  codusua   Int
+  id         Int      @id @default(autoincrement())
+  codusua    Int
   id_fili    String
-  logusua   String
+  logusua    String
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
@@ -104,20 +105,20 @@ model Vendedores {
 }
 
 model Vendas {
-  id        Int      @id @default(autoincrement())
-  numnota   Int
-  servend   String
-  codfili   String
+  id         Int      @id @default(autoincrement())
+  numnota    Int
+  servend    String
+  codfili    String
   id_fili    String
-  datvend   DateTime
-  codparc   Int
-  venvend   Int
-  vlrliqu   Decimal
-  vlrnota   Decimal
-  nomparc   String
-  staorca   String
-  cidade    Int
-  produtos  Json
+  datvend    DateTime
+  codparc    Int
+  venvend    Int
+  vlrliqu    Decimal
+  vlrnota    Decimal
+  nomparc    String
+  staorca    String
+  cidade     Int
+  produtos   Json
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 
@@ -125,20 +126,20 @@ model Vendas {
 }
 
 model Orcamento {
-  id        Int      @id @default(autoincrement())
-  codorca   Int
-  codfili   String
-  resseri   String
+  id         Int      @id @default(autoincrement())
+  codorca    Int
+  codfili    String
+  resseri    String
   id_fili    String
-  datpedi   DateTime
-  codclie   Int
-  codusua   Int
-  vlrorca   Decimal
-  vlrliqu   Decimal
-  nomparc   String
-  staorca   String
-  cidade    Int
-  produtos  Json
+  datpedi    DateTime
+  codclie    Int
+  codusua    Int
+  vlrorca    Decimal
+  vlrliqu    Decimal
+  nomparc    String
+  staorca    String
+  cidade     Int
+  produtos   Json
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
 

@@ -22,6 +22,7 @@ async function bootstrap() {
     .addTag('prospect')
     .addTag('venda')
     .addTag('orcamento')
+    .addTag('visita')
     .build();
   const document = SwaggerModule.createDocument(app, config);
 
