@@ -1,10 +1,14 @@
-import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
-import { Prisma,  } from '@prisma/client';
+import {
+  Injectable,
+  NotFoundException,
+  BadRequestException,
+} from '@nestjs/common';
+import { Prisma } from '@prisma/client';
 import { PrismaService } from 'src/prisma.service';
 
 @Injectable()
 export class SaleService {
-  constructor(private prisma: PrismaService) {} 
+  constructor(private prisma: PrismaService) {}
 
   async findAll() {
     return this.prisma.vendas.findMany({
@@ -42,6 +46,7 @@ export class SaleService {
   }
 
   async createVenda(vendaData: Prisma.VendasCreateInput) {
+    vendaData.datvend = new Date(vendaData.datvend);
     try {
       const novaVenda = await this.prisma.vendas.create({
         data: vendaData,

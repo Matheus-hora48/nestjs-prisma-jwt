@@ -34,8 +34,7 @@ export class BranchService {
       const novaFilial = await this.prisma.filiais.create({
         data: filialData,
       });
-      const { coddomi, cnpfili, id_fili } = novaFilial;
-      return { coddomi, cnpfili, id_fili };
+      return novaFilial;
     } catch (e) {
       throw new BadRequestException({ errors: e });
     }

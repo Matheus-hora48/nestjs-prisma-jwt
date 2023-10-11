@@ -46,41 +46,12 @@ export class ProspectService {
 
   async createProspect(prospectData: Prisma.ProspectCreateInput) {
     prospectData.cadparc = new Date(prospectData.cadparc);
-    prospectData.cadparc = new Date(prospectData.cadparc);
 
     try {
       const novoProspect = await this.prisma.prospect.create({
         data: prospectData,
       });
-      console.log(prospectData);
-      const {
-        cadparc,
-        coddomi,
-        id_fili,
-        nomparc,
-        sobparc,
-        cgcende,
-        fonende,
-        codparc,
-        codcida,
-        usuparc,
-        is_leds,
-        is_parc,
-      } = novoProspect;
-      return {
-        cadparc,
-        coddomi,
-        id_fili,
-        nomparc,
-        sobparc,
-        cgcende,
-        fonende,
-        codparc,
-        codcida,
-        usuparc,
-        is_leds,
-        is_parc,
-      };
+      return novoProspect;
     } catch (e) {
       console.log(e);
 

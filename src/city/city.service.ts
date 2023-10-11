@@ -54,8 +54,7 @@ export class CityService {
       const novaCidade = await this.prisma.cidade.create({
         data: cityData,
       });
-      const { codmuni, uf_muni, nommuni, id_fili } = novaCidade;
-      return { codmuni, uf_muni, nommuni, id_fili };
+      return novaCidade;
     } catch (e) {
       throw new BadRequestException({ errors: e });
     }
