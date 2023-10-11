@@ -1,13 +1,4 @@
-import { ApiProperty } from "@nestjs/swagger";
+import { ApiProperty, PartialType } from '@nestjs/swagger';
+import { CreateBranchDto } from './create-branch.dto';
 
-export class UpdateBranchDto {
-    @ApiProperty({ description: 'Código do domínio da filial', example: '001' })
-    coddomi: string;
-  
-    @ApiProperty({ description: 'CNPJ da filial', example: '82381421000174' })
-    cnpfili: string;
-  
-    @ApiProperty({ description: 'ID da filial', example: '82381421000174001' })
-    id_fili: string;
-  }
-  
+export class UpdateBranchDto extends PartialType(CreateBranchDto) {}
