@@ -62,6 +62,11 @@ export class CreateSaleDto {
   })
   cidade: number;
   @ApiProperty({
+    description: 'Codigo da venda',
+    example: 281,
+  })
+  codvend: number;
+  @ApiProperty({
     description: 'Produtos da venda',
     example: {},
   })

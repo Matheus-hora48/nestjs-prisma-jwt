@@ -41,7 +41,7 @@ export class SaleController {
   @ApiOperation({
     summary: 'Buscar todas vendas com apenas id_fili e numnota',
   })
-  @ApiResponse({ status: 200, description: 'Todos prospects encontradas' })
+  @ApiResponse({ status: 200, description: 'Todas vendas encontradas' })
   async selecionarVenda() {
     return await this.salesService.findAllSelected();
   }
