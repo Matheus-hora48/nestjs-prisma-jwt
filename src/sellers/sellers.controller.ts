@@ -21,6 +21,7 @@ import { JwtAuthGuard } from 'src/authentication/auth.guard';
 import { SallersFindDto } from './dto/find-sallers.dto';
 import { CreateSellerDto } from './dto/create-seller.dto';
 import { UpdateSellerDto } from './dto/update-seller.dto';
+import { SearchSallerDto } from './dto/search-sallers.dto';
 
 @ApiTags('vendedor')
 @ApiBearerAuth()
@@ -44,6 +45,16 @@ export class SellersController {
   @ApiResponse({ status: 200, description: 'vendedor encontrado' })
   async selectVendedor() {
     return await this.vendedorService.findAllSelected();
+  }
+
+  @Get('codigoUser')
+  @UseGuards(JwtAuthGuard)
+  @ApiOperation({
+    summary: 'Selecionar códigos de usuário',
+  })
+  @ApiResponse({ status: 200, description: 'Códigos de usuário encontrados' })
+  async selectCodigoUser() {
+    return await this.vendedorService.selectUserCode();
   }
 
   @Post('buscar/venda')
@@ -91,6 +102,7 @@ export class SellersController {
   @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Buscar vendedor por CNPJ' })
   @ApiResponse({ status: 200, description: 'vendedor encontrada' })
+  @ApiBody({ type: SearchSallerDto })
   async searchVendedorByCnpj(@Body('cnpj') cnpj: string) {
     return { result: await this.vendedorService.findVendedorByCnpj(cnpj) };
   }

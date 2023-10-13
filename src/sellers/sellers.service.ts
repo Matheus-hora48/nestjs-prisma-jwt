@@ -25,6 +25,13 @@ export class SellersService {
     });
   }
 
+  async selectUserCode() {
+    return this.prisma.vendedores.findMany({
+      select: {
+        codusua: true,
+      },
+    });
+  }
   async findSalesBySeller(
     logusua: number,
     cnpj: string,
