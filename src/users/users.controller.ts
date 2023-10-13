@@ -38,13 +38,13 @@ export class UsersController {
       const result = await this.userService.getAllUser();
       return response.status(200).json({
         status: 'Ok!',
-        message: 'Successfully fetch data!',
+        message: 'Dados com sucesso!',
         result: result,
       });
     } catch (err) {
       return response.status(500).json({
         status: 'Ok!',
-        message: 'Internal Server Error!',
+        message: 'Erro do Servidor Interno!',
       });
     }
   }
@@ -60,21 +60,21 @@ export class UsersController {
 
       if (!user) {
         return response.status(404).json({
-          status: 'Not Found',
-          message: 'User not found',
+          status: 'Não encontrado',
+          message: 'Usuário não encontrado',
         });
       }
 
       return response.status(200).json({
         status: 'Ok!',
-        message: 'User found',
+        message: 'Usuário encontrado',
         result: user,
       });
     } catch (err) {
       console.log(err);
       return response.status(500).json({
-        status: 'Internal Server Error',
-        message: 'Internal Server Error',
+        status: 'Erro do Servidor Interno!',
+        message: 'Erro do Servidor Interno!',
       });
     }
   }
@@ -94,20 +94,20 @@ export class UsersController {
 
       if (!updatedUser) {
         return response.status(404).json({
-          status: 'Not Found',
-          message: 'User not found',
+          status: 'Não encontrado',
+          message: 'Usuário não encontrado',
         });
       }
 
       return response.status(200).json({
         status: 'Ok!',
-        message: 'User updated successfully',
+        message: 'Usuário atualizado com sucesso',
         result: updatedUser,
       });
     } catch (err) {
       return response.status(500).json({
-        status: 'Internal Server Error',
-        message: 'Internal Server Error',
+        status: 'Erro do Servidor Interno!',
+        message: 'Erro do Servidor Interno!',
       });
     }
   }
@@ -126,20 +126,20 @@ export class UsersController {
 
       if (!deletedUser) {
         return response.status(404).json({
-          status: 'Not Found',
-          message: 'User not found',
+          status: 'Não encontrado',
+          message: 'Usuário não encontrado',
         });
       }
 
       return response.status(200).json({
         status: 'Ok!',
-        message: 'User deleted successfully',
+        message: 'Usuário excluído com sucesso',
         result: deletedUser,
       });
     } catch (err) {
       return response.status(500).json({
-        status: 'Internal Server Error',
-        message: 'Internal Server Error',
+        status: 'Erro do Servidor Interno!',
+        message: 'Erro do Servidor Interno!',
       });
     }
   }
