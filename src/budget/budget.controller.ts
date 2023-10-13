@@ -30,8 +30,8 @@ export class BudgetController {
 
   @Get()
   @UseGuards(JwtAuthGuard)
-  @ApiOperation({ summary: 'Buscar todas Orcamentos' })
-  @ApiResponse({ status: 200, description: 'Todas Orcamentos encontrados' })
+  @ApiOperation({ summary: 'Buscar todos Orcamentos' })
+  @ApiResponse({ status: 200, description: 'Todos Orcamentos encontrados' })
   async index() {
     return { result: await this.salesService.findAll() };
   }
@@ -39,9 +39,9 @@ export class BudgetController {
   @Get('selecionar')
   @UseGuards(JwtAuthGuard)
   @ApiOperation({
-    summary: 'Buscar todas orcamentos com apenas id_fili e numnota',
+    summary: 'Buscar todos orcamentos com apenas id_fili e numnota',
   })
-  @ApiResponse({ status: 200, description: 'Todos orcamentos encontradas' })
+  @ApiResponse({ status: 200, description: 'Todos orcamentos encontrados' })
   async selecionarOrcamento() {
     return await this.salesService.findAllSelected();
   }
@@ -49,7 +49,7 @@ export class BudgetController {
   @Post('buscar')
   @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Buscar orcamentos por informações' })
-  @ApiResponse({ status: 200, description: 'Orcamento encontrada' })
+  @ApiResponse({ status: 200, description: 'Orcamento encontrado' })
   @ApiBody({ type: BudgetFindDto })
   async buscarOrcamento(@Body() reqBody: BudgetFindDto) {
     const { logusua, cnpj, codmuni, codfili, dtebegn, dateend } = reqBody;
@@ -76,8 +76,8 @@ export class BudgetController {
 
   @Post('enviar')
   @UseGuards(JwtAuthGuard)
-  @ApiOperation({ summary: 'Enviar novo orcamentos' })
-  @ApiResponse({ status: 200, description: 'Orcamento enviada com sucesso' })
+  @ApiOperation({ summary: 'Enviar novo orcamento' })
+  @ApiResponse({ status: 200, description: 'Orcamento enviado com sucesso' })
   @ApiBody({ type: CreateBudgetDto })
   async enviarOrcamento(@Body() body: Prisma.OrcamentoCreateInput) {
     return await this.salesService.createOrcamento(body);
@@ -85,8 +85,8 @@ export class BudgetController {
 
   @Put(':id')
   @UseGuards(JwtAuthGuard)
-  @ApiOperation({ summary: 'Atualizar orcamentos por ID' })
-  @ApiResponse({ status: 200, description: 'Orcamento atualizada com sucesso' })
+  @ApiOperation({ summary: 'Atualizar orcamento por ID' })
+  @ApiResponse({ status: 200, description: 'Orcamento atualizado com sucesso' })
   @ApiBody({ type: UpdateBudgetDto })
   async atualizarOrcamento(
     @Param('id') id: number,
@@ -97,8 +97,8 @@ export class BudgetController {
 
   @Delete(':id')
   @UseGuards(JwtAuthGuard)
-  @ApiOperation({ summary: 'Deletar orcamentos por ID' })
-  @ApiResponse({ status: 200, description: 'Orcamento deletada com sucesso' })
+  @ApiOperation({ summary: 'Deletar orcamento por ID' })
+  @ApiResponse({ status: 200, description: 'Orcamento deletado com sucesso' })
   async deleteOrcamento(@Param('id') id: number) {
     return await this.salesService.deleteOrcamento(id);
   }

@@ -85,7 +85,7 @@ export class ProspectController {
   @Put(':id')
   @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Atualizar prospect por ID' })
-  @ApiResponse({ status: 200, description: 'Prospect atualizada com sucesso' })
+  @ApiResponse({ status: 200, description: 'Prospect atualizado com sucesso' })
   @ApiBody({ type: UpdateProspectDto })
   async atualizarProspect(
     @Param('id') id: number,
@@ -97,7 +97,7 @@ export class ProspectController {
   @Delete(':id')
   @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Deletar prospect por ID' })
-  @ApiResponse({ status: 200, description: 'Prospect deletada com sucesso' })
+  @ApiResponse({ status: 200, description: 'Prospect deletado com sucesso' })
   async deleteProspect(@Param('id') id: number) {
     return await this.prospectService.deleteProspect(id);
   }

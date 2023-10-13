@@ -49,7 +49,7 @@ export class VisitController {
   @Post('buscar')
   @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Buscar visitas por informações' })
-  @ApiResponse({ status: 200, description: 'Visitas encontrado' })
+  @ApiResponse({ status: 200, description: 'Visitas encontrada' })
   @ApiBody({ type: VisitFindDto })
   async searchVisitaByParams(@Body() reqBody: VisitFindDto) {
     const { logusua, cnpj, codmuni, codfili, dtebegn, dateend } = reqBody;
@@ -75,7 +75,7 @@ export class VisitController {
   @Post('buscar/cnpj')
   @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Buscar visitas por cnpj' })
-  @ApiResponse({ status: 200, description: 'Visitas encontrado' })
+  @ApiResponse({ status: 200, description: 'Visitas encontradas' })
   @ApiBody({ type: VisitFindCnpjDto })
   async searchVisitaByCnpj(@Body('cnpj') cnpj: string) {
     return { result: await this.visitaService.findVisitaByCnpj(cnpj) };
@@ -83,8 +83,8 @@ export class VisitController {
 
   @Post('enviar')
   @UseGuards(JwtAuthGuard)
-  @ApiOperation({ summary: 'Enviar novo visita' })
-  @ApiResponse({ status: 200, description: 'Visita enviado com sucesso' })
+  @ApiOperation({ summary: 'Enviar nova visita' })
+  @ApiResponse({ status: 200, description: 'Visita enviada com sucesso' })
   @ApiBody({ type: CreateVisitDto })
   async createVisita(@Body() body: Prisma.VisitaCreateInput) {
     return await this.visitaService.createVisita(body);

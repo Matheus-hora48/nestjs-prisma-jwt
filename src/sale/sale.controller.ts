@@ -31,7 +31,7 @@ export class SaleController {
   @Get()
   @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Buscar todas vendas' })
-  @ApiResponse({ status: 200, description: 'Todas vendas encontrados' })
+  @ApiResponse({ status: 200, description: 'Todas vendas encontradas' })
   async index() {
     return { result: await this.salesService.findAll() };
   }
@@ -49,7 +49,7 @@ export class SaleController {
   @Post('buscar')
   @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Buscar vendas por informações' })
-  @ApiResponse({ status: 200, description: 'venda encontrada' })
+  @ApiResponse({ status: 200, description: 'Venda encontrada' })
   @ApiBody({ type: SaleFindDto })
   async buscarVenda(@Body() reqBody: SaleFindDto) {
     const { logusua, cnpj, codmuni, codfili, dtebegn, dateend } = reqBody;
@@ -76,7 +76,7 @@ export class SaleController {
 
   @Post('enviar')
   @UseGuards(JwtAuthGuard)
-  @ApiOperation({ summary: 'Enviar novo venda' })
+  @ApiOperation({ summary: 'Enviar nova venda' })
   @ApiResponse({ status: 200, description: 'Venda enviada com sucesso' })
   @ApiBody({ type: CreateSaleDto })
   async enviarVenda(@Body() body: Prisma.VendasCreateInput) {
