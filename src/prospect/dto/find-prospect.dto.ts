@@ -6,7 +6,7 @@ export class ProspectFindDto {
   @IsNumber()
   @ApiProperty({
     description: 'Codigo do usuario que fez o prospect para busca',
-    example: 1,
+    example: 3,
   })
   logusua?: number;
 

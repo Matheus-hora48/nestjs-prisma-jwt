@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsOptional, IsString, IsDate, IsNumber } from 'class-validator';
 
-export class BudgetFindDto {
+export class SallersFindDto {
   @IsOptional()
   @IsNumber()
   @ApiProperty({

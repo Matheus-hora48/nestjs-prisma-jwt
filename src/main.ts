@@ -19,6 +19,7 @@ async function bootstrap() {
     .addTag('usuario')
     .addTag('cidades')
     .addTag('filiais')
+    .addTag('vendedor')
     .addTag('prospect')
     .addTag('venda')
     .addTag('orcamento')

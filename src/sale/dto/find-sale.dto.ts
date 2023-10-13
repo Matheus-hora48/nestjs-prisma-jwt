@@ -6,7 +6,7 @@ export class SaleFindDto {
   @IsNumber()
   @ApiProperty({
     description: 'Codigo do usuario que fez a venda para busca',
-    example: 1,
+    example: 3,
   })
   logusua?: number;
 

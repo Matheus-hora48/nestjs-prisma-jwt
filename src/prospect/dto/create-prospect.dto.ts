@@ -48,7 +48,7 @@ export class CreateProspectDto {
   codcida: number;
   @ApiProperty({
     description: 'Codigo do usuario que fez o prospect',
-    example: 1,
+    example: 3,
   })
   usuparc: number;
   @ApiProperty({

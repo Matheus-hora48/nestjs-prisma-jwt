@@ -93,19 +93,21 @@ model Visita {
 }
 
 model Vendedores {
-  id         Int      @id @default(autoincrement())
+  id         Int         @id @default(autoincrement())
   codusua    Int
   id_fili    String
   logusua    String
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  vendas     Vendas[]
+  orcamento  Orcamento[]
+  created_at DateTime    @default(now())
+  updated_at DateTime    @updatedAt
 
   @@unique([codusua, id_fili], name: "vendedors_codusua_id_fili_key")
   @@map("vendedors")
 }
 
 model Vendas {
-  id         Int      @id @default(autoincrement())
+  id         Int         @id @default(autoincrement())
   numnota    Int
   servend    String
   codfili    String
@@ -119,14 +121,15 @@ model Vendas {
   staorca    String
   cidade     Int
   produtos   Json
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  created_at DateTime    @default(now())
+  updated_at DateTime    @updatedAt
+  Vendedores Vendedores? @relation(fields: [venvend, id_fili], references: [codusua, id_fili])
 
   @@map("vendas")
 }
 
 model Orcamento {
-  id         Int      @id @default(autoincrement())
+  id         Int         @id @default(autoincrement())
   codorca    Int
   codfili    String
   resseri    String
@@ -140,8 +143,9 @@ model Orcamento {
   staorca    String
   cidade     Int
   produtos   Json
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  created_at DateTime    @default(now())
+  updated_at DateTime    @updatedAt
+  Vendedores Vendedores? @relation(fields: [codusua, id_fili], references: [codusua, id_fili])
 
   @@map("orcamentos")
 }

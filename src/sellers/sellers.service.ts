@@ -1,5 +1,9 @@
-import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
-import { Prisma, } from '@prisma/client';
+import {
+  Injectable,
+  NotFoundException,
+  BadRequestException,
+} from '@nestjs/common';
+import { Prisma, Vendedores } from '@prisma/client';
 import { PrismaService } from 'src/prisma.service';
 
 @Injectable()
@@ -21,12 +25,56 @@ export class SellersService {
     });
   }
 
-  async findSalesByVendedor(reqBody: Prisma.VendedoresFindManyArgs) {
-    return this.prisma.vendedores.findMany(reqBody);
+  async findSalesBySeller(
+    logusua: number,
+    cnpj: string,
+    codmuni: number,
+    codfili: string,
+    dtebegn: Date,
+    dateend: Date,
+  ): Promise<Vendedores[]> {
+    return this.prisma.vendedores.findMany({
+      include: {
+        vendas: {
+          where: {
+            id_fili: { contains: cnpj || '' },
+            venvend: logusua,
+            cidade: codmuni,
+            codfili: codfili,
+            datvend: {
+              gte: new Date(dtebegn),
+              lte: new Date(dateend),
+            },
+          },
+        },
+      },
+    });
   }
 
-  async findOrcamentoByVendedor(reqBody: Prisma.VendedoresFindManyArgs) {
-    return this.prisma.vendedores.findMany(reqBody);
+  async findOrcamentoBySeller(
+    logusua: number,
+    cnpj: string,
+    codmuni: number,
+    codfili: string,
+    dtebegn: Date,
+    dateend: Date,
+  ): Promise<Vendedores[]> {
+    return this.prisma.vendedores.findMany({
+      include: {
+        orcamento: {
+          where: {
+            id_fili: { contains: cnpj || '' },
+            codusua: logusua,
+            cidade: codmuni,
+            codfili: codfili,
+            datpedi: {
+              gte: new Date(dtebegn),
+              lte: new Date(dateend),
+            },
+          },
+        },
+      },
+    });
   }
 
   async findVendedorByCnpj(cnpj: string) {
