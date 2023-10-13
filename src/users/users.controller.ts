@@ -54,10 +54,7 @@ export class UsersController {
   @ApiOperation({ summary: 'Busca um usuário por ID' })
   @ApiResponse({ status: 200, description: 'Usuário encontrado' })
   @ApiResponse({ status: 404, description: 'Usuário não encontrado' })
-  async getUserById(
-    @Param('id') id: number,
-    @Res() response: Response,
-  ): Promise<any> {
+  async getUserById(@Param('id') id: number, @Res() response: Response) {
     try {
       const user = await this.userService.getUserById(id);
 
@@ -74,6 +71,7 @@ export class UsersController {
         result: user,
       });
     } catch (err) {
+      console.log(err);
       return response.status(500).json({
         status: 'Internal Server Error',
         message: 'Internal Server Error',

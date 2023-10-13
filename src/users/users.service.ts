@@ -10,7 +10,7 @@ export class UsersService {
     return this.prisma.users.findMany();
   }
 
-  async createUser(data: Users): Promise<Users> {
+  async createUser(data: Users) {
     const existing = await this.prisma.users.findUnique({
       where: {
         cnpj: data.cnpj,
@@ -25,7 +25,12 @@ export class UsersService {
       data,
     });
   }
-  async getUserById(id: number): Promise<Users | null> {
+
+  async getUserById(id: number) {
+    if (typeof id === 'string') {
+      id = parseInt(id, 10);
+    }
+
     return this.prisma.users.findUnique({
       where: {
         id,
@@ -33,7 +38,10 @@ export class UsersService {
     });
   }
 
-  async updateUser(id: number, data: Partial<Users>): Promise<Users | null> {
+  async updateUser(id: number, data: Partial<Users>) {
+    if (typeof id === 'string') {
+      id = parseInt(id, 10);
+    }
     return this.prisma.users.update({
       where: {
         id,
@@ -42,7 +50,10 @@ export class UsersService {
     });
   }
 
-  async deleteUser(id: number): Promise<Users | null> {
+  async deleteUser(id: number) {
+    if (typeof id === 'string') {
+      id = parseInt(id, 10);
+    }
     return this.prisma.users.delete({
       where: {
         id,
