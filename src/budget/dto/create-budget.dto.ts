@@ -1,4 +1,4 @@
-import { ApiProperty } from "@nestjs/swagger";
+import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateBudgetDto {
   @ApiProperty({
@@ -12,23 +12,23 @@ export class CreateBudgetDto {
   })
   resseri: string;
   @ApiProperty({
-    description: 'Codigo da filial',
+    description: 'Código da filial',
     example: '001',
   })
   codfili: string;
-  
+
   @ApiProperty({
     description: 'Data do orcamento',
     example: '2020-03-01 00:00:00',
   })
   datpedi: Date;
   @ApiProperty({
-    description: 'Codigo do orcamento',
+    description: 'Código do orcamento',
     example: 2,
   })
   codorca: number;
   @ApiProperty({
-    description: 'Codigo do usuario que fez o orcamento',
+    description: 'Código do usuário que fez o orcamento',
     example: 3,
   })
   codusua: number;
@@ -58,7 +58,7 @@ export class CreateBudgetDto {
   })
   staorca: string;
   @ApiProperty({
-    description: 'Codigo da cidade da venda',
+    description: 'Código da cidade da venda',
     example: 2903201,
   })
   cidade: number;

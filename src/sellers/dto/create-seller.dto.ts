@@ -2,7 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateSellerDto {
   @ApiProperty({
-    description: 'Codigo do usuario',
+    description: 'Código do usuário',
     example: 3,
   })
   codusua: number;
@@ -12,7 +12,7 @@ export class CreateSellerDto {
   })
   id_fili: string;
   @ApiProperty({
-    description: 'Nome do usuario',
+    description: 'Nome do usuário',
     example: 'roberto',
   })
   logusua: string;

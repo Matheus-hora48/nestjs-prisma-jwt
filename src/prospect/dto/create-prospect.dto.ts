@@ -7,7 +7,7 @@ export class CreateProspectDto {
   })
   cadparc: Date;
   @ApiProperty({
-    description: 'Codigo da filial',
+    description: 'Código da filial',
     example: '001',
   })
   coddomi: string;
@@ -37,27 +37,27 @@ export class CreateProspectDto {
   })
   fonende: string;
   @ApiProperty({
-    description: 'Codigo do parceiro',
+    description: 'Código do parceiro',
     example: 98,
   })
   codparc: number;
   @ApiProperty({
-    description: 'Codigo da cidade do prospect',
+    description: 'Código da cidade do prospect',
     example: 2903201,
   })
   codcida: number;
   @ApiProperty({
-    description: 'Codigo do usuario que fez o prospect',
+    description: 'Código do usuário que fez o prospect',
     example: 3,
   })
   usuparc: number;
   @ApiProperty({
-    description: 'Codigo para saber se virou lead',
+    description: 'Código para saber se virou lead',
     example: 0,
   })
   is_leds: number;
   @ApiProperty({
-    description: 'Codigo para saber se virou parceiro',
+    description: 'Código para saber se virou parceiro',
     example: 98,
   })
   is_parc: number;

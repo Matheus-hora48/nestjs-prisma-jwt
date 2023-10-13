@@ -7,7 +7,7 @@ export class CreateSaleDto {
   })
   id_fili: string;
   @ApiProperty({
-    description: 'Codigo da filial',
+    description: 'Código da filial',
     example: '001',
   })
   codfili: string;
@@ -27,12 +27,12 @@ export class CreateSaleDto {
   })
   datvend: Date;
   @ApiProperty({
-    description: 'Codigo do parceiro',
+    description: 'Código do parceiro',
     example: 13,
   })
   codparc: number;
   @ApiProperty({
-    description: 'Codigo do vendedor que fez a venda',
+    description: 'Código do vendedor que fez a venda',
     example: 3,
   })
   venvend: number;
@@ -57,12 +57,12 @@ export class CreateSaleDto {
   })
   staorca: string;
   @ApiProperty({
-    description: 'Codigo da cidade da venda',
+    description: 'Código da cidade da venda',
     example: 2903201,
   })
   cidade: number;
   @ApiProperty({
-    description: 'Codigo da venda',
+    description: 'Código da venda',
     example: 281,
   })
   codvend: number;

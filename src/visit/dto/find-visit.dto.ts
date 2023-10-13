@@ -5,7 +5,7 @@ export class VisitFindDto {
   @IsOptional()
   @IsNumber()
   @ApiProperty({
-    description: 'Codigo do usuario que fez o visita para busca',
+    description: 'Código do usuário que fez o visita para busca',
     example: 3,
   })
   logusua?: number;
@@ -24,7 +24,7 @@ export class VisitFindDto {
   @IsOptional()
   @IsString()
   @ApiProperty({
-    description: 'Codigo da cidade para busca',
+    description: 'Código da cidade para busca',
     example: '2903201',
   })
   codmuni?: number;
@@ -32,7 +32,7 @@ export class VisitFindDto {
   @IsOptional()
   @IsString()
   @ApiProperty({
-    description: 'Codigo da filial para busca',
+    description: 'Código da filial para busca',
     example: '001',
   })
   codfili?: string;

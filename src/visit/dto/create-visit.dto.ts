@@ -2,7 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateVisitDto {
   @ApiProperty({
-    description: 'Codigo da visita',
+    description: 'Código da visita',
     example: '1',
   })
   codvist: number;
@@ -42,7 +42,7 @@ export class CreateVisitDto {
   })
   locvist: number;
   @ApiProperty({
-    description: 'Usuario que fez a visita',
+    description: 'Usuário que fez a visita',
     example: 3,
   })
   usuvist: number;
