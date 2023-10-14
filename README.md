@@ -69,6 +69,14 @@ Depois
   npx prisma db push
 ```
 
+## Acessar a documentação
+
+Após abrir a aplicação para ter acesso à documentação do Swagger, acesse:
+
+```bash
+  http://localhost:3000/api
+```
+
 ## Principais Comandos do Prisma
 
 O Prisma oferece uma série de comandos úteis para gerenciar o banco de dados e o esquema. Abaixo estão os comandos mais comuns:
